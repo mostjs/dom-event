@@ -24,7 +24,7 @@ const stream = eventName(domNode, useCapture = false)
 
 ### domEvent
 
-`domEvent :: (EventTarget t, Event e) => String -> t -> boolean=false -> Stream e
+`domEvent :: (EventTarget t, Event e) => String -> t -> boolean=false -> Stream e`
 
 If there's an event type that isn't supported, you can use the general `domEvent` API:
 
