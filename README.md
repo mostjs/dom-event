@@ -10,6 +10,10 @@ const clickStream = click(el);
 clickStream.observe(event => console.log(event));
 ```
 
+## Install
+
+`npm install --save @most/dom-event`
+
 ## API
 
 ### Events
