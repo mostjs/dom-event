@@ -4,12 +4,12 @@
 import { describe, it } from 'mocha';
 import assert from 'assert';
 import FakeEventTarget from './helper/FakeEventTarget';
-import { domEvent } from '../src/dom-event';
+import * as DOMEvent from '../src/dom-event';
 
 describe('domEvent', () => {
     it('should call addEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t, true);
+        const s = DOMEvent.domEvent('test', t, true);
 
         s.drain();
 
@@ -19,7 +19,7 @@ describe('domEvent', () => {
 
     it('should call addEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t, false);
+        const s = DOMEvent.domEvent('test', t, false);
 
         s.drain();
 
@@ -29,7 +29,7 @@ describe('domEvent', () => {
 
     it('should call addEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t);
+        const s = DOMEvent.domEvent('test', t);
 
         s.drain();
 
@@ -39,7 +39,7 @@ describe('domEvent', () => {
 
     it('should propagate events', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t);
+        const s = DOMEvent.domEvent('test', t);
 
         setTimeout(() => {
             t.emit(1);
@@ -53,7 +53,7 @@ describe('domEvent', () => {
 
     it('should call removeEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t, true);
+        const s = DOMEvent.domEvent('test', t, true);
 
         setTimeout(() => t.emit(1), 0);
 
@@ -65,7 +65,7 @@ describe('domEvent', () => {
 
     it('should call removeEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t, false);
+        const s = DOMEvent.domEvent('test', t, false);
 
         setTimeout(() => t.emit(1), 0);
 
@@ -77,7 +77,7 @@ describe('domEvent', () => {
 
     it('should call removeEventListener with expected parameters', () => {
         const t = new FakeEventTarget();
-        const s = domEvent('test', t);
+        const s = DOMEvent.domEvent('test', t);
 
         setTimeout(() => t.emit(1), 0);
 
@@ -86,4 +86,90 @@ describe('domEvent', () => {
             assert.strictEqual(false, t.removedCapture);
         });
     });
+
+    Object.keys(DOMEvent)
+      .filter(key => key !== 'domEvent')
+      .forEach(eventType => {
+        describe(`${eventType}()`, () => {
+          it('should call addEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t, true);
+
+              s.drain();
+
+              assert.strictEqual(eventType, t.event);
+              assert.strictEqual(true, t.capture);
+          });
+
+          it('should call addEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t, false);
+
+              s.drain();
+
+              assert.strictEqual(eventType, t.event);
+              assert.strictEqual(false, t.capture);
+          });
+
+          it('should call addEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t);
+
+              s.drain();
+
+              assert.strictEqual(eventType, t.event);
+              assert.strictEqual(false, t.capture);
+          });
+
+          it('should propagate events', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t);
+
+              setTimeout(() => {
+                  t.emit(1);
+                  t.emit(2);
+                  t.emit(3);
+              }, 0);
+
+              return s.take(3).reduce((a, x) => a.concat(x), [])
+                  .then(result => assert.deepEqual([1, 2, 3], result));
+          });
+
+          it('should call removeEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t, true);
+
+              setTimeout(() => t.emit(1), 0);
+
+              return s.take(1).drain().then(() => {
+                  assert.strictEqual(eventType, t.removedEvent);
+                  assert.strictEqual(true, t.removedCapture);
+              });
+          });
+
+          it('should call removeEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t, false);
+
+              setTimeout(() => t.emit(1), 0);
+
+              return s.take(1).drain().then(() => {
+                  assert.strictEqual(eventType, t.removedEvent);
+                  assert.strictEqual(false, t.removedCapture);
+              });
+          });
+
+          it('should call removeEventListener with expected parameters', () => {
+              const t = new FakeEventTarget();
+              const s = DOMEvent[eventType](t);
+
+              setTimeout(() => t.emit(1), 0);
+
+              return s.take(1).drain().then(() => {
+                  assert.strictEqual(eventType, t.removedEvent);
+                  assert.strictEqual(false, t.removedCapture);
+              });
+          });
+        });
+      });
 });
