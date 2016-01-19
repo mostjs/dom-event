@@ -1,3 +1,6 @@
+/** @license MIT License (c) copyright 2015-2016 original author or authors */
+/** @author Brian Cavalier */
+'use strict';
 
 import { Stream } from 'most';
 
