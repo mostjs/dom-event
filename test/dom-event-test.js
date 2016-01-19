@@ -4,7 +4,7 @@
 import { describe, it } from 'mocha';
 import assert from 'assert';
 import FakeEventTarget from './helper/FakeEventTarget';
-const DOMEvent = require('../src/dom-event');
+import * as DOMEvent from '../src/dom-event';
 
 describe('domEvent', () => {
     it('should call addEventListener with expected parameters', () => {
@@ -90,9 +90,7 @@ describe('domEvent', () => {
     Object.keys(DOMEvent)
       .filter(key => key !== 'domEvent')
       .forEach(eventType => {
-
         describe(`${eventType}()`, () => {
-
           it('should call addEventListener with expected parameters', () => {
               const t = new FakeEventTarget();
               const s = DOMEvent[eventType](t, true);
