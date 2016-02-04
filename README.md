@@ -18,7 +18,7 @@ clickStream.observe(event => console.log(event));
 
 ### Events
 
-`<eventName> :: (EventTarget t, Event e) => t -> boolean=false -> Stream e`
+#### &lt;eventName&gt; :: (EventTarget t, Event e) => t &rarr; boolean=false &rarr; Stream e
 
 See [the source](src/dom-event.js) for all the supported event names.  Each has the general signature:
 
@@ -28,7 +28,7 @@ const stream = eventName(domNode, useCapture = false)
 
 ### domEvent
 
-`domEvent :: (EventTarget t, Event e) => String -> t -> boolean=false -> Stream e`
+#### domEvent :: (EventTarget t, Event e) => String &rarr; t &rarr; boolean=false &rarr; Stream e
 
 If there's an event type that isn't supported, you can use the general `domEvent` API:
 
