@@ -1,6 +1,6 @@
 {
   "name": "@most/dom-event",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Streamlined DOM Events for most.js",
   "main": "dist/dom-event.js",
   "files": [
