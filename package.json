@@ -45,11 +45,11 @@
     "jscs": "^2.8.0",
     "jsinspect": "^0.7.2",
     "mocha": "^2.3.4",
-    "most": "^0.18.0",
+    "most": "^0.19.0",
     "rollup": "^0.24.1",
     "uglify-js": "^2.6.1"
   },
   "peerDependencies": {
-    "most": "^0.18.0"
+    "most": "^0.19.0"
   }
 }
