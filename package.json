@@ -3,8 +3,10 @@
   "version": "1.2.0",
   "description": "Streamlined DOM Events for most.js",
   "main": "dist/dom-event.js",
+  "typings": "dist/dom-event.d.ts",
   "files": [
-    "dist/dom-event.js"
+    "dist/dom-event.js",
+    "dist/dom-event.d.ts"
   ],
   "scripts": {
     "build-dist": "mkdir -p dist && rollup src/dom-event.js | babel --presets es2015 --plugins transform-es2015-modules-umd --module-id '@most/dom-event' -o dist/dom-event.js",
