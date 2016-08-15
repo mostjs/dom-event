@@ -56,6 +56,6 @@
     "uglify-js": "^2.6.1"
   },
   "peerDependencies": {
-    "most": "^1.0.0"
+    "most": "^1.0.1"
   }
 }
