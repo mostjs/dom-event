@@ -4,7 +4,7 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
 import FakeEventTarget from './helper/FakeEventTarget'
-import * as DOMEvent from '../src/dom-event'
+import * as DOMEvent from '../src/index'
 
 const verifyAddEventListener = (eventType, capture) => {
   const t = new FakeEventTarget()

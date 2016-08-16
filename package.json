@@ -2,15 +2,17 @@
   "name": "@most/dom-event",
   "version": "1.2.1",
   "description": "Streamlined DOM Events for most.js",
-  "main": "dist/dom-event.js",
+  "main": "dist/mostDomEvent.js",
+  "jsnext:main": "src/index.js",
   "typings": "type-definitions/dom-event.d.ts",
   "files": [
-    "dist/dom-event.js",
+    "src/*",
+    "dist/mostDomEvent.js",
     "type-defintions/dom-event.d.ts"
   ],
   "scripts": {
-    "build": "npm run build-dist && uglifyjs dist/mostPackage.js -o dist/mostPackage.min.js",
-    "build-dist": "mkdir -p dist && rollup -c --name '@most/mostPackage' | umd-name-transform -o dist/mostPackage.js",
+    "build": "npm run build-dist && uglifyjs dist/mostDomEvent.js -o dist/mostDomEvent.min.js",
+    "build-dist": "mkdir -p dist && rollup -c",
     "lint": "jsinspect src && jsinspect test && eslint src test",
     "prepublish": "npm run build",
     "preversion": "npm run build",
@@ -51,7 +53,8 @@
     "most": "^1.0.1",
     "rollup": "0.34.8",
     "rollup-plugin-buble": "0.12.1",
-    "uglify-js": "^2.7.1"
+    "uglify-js": "^2.7.1",
+    "umd-name-transform": "1.0.1"
   },
   "peerDependencies": {
     "most": "^1.0.1"
