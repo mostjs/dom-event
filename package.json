@@ -54,7 +54,7 @@
     "most": "^1.0.1",
     "rollup": "0.34.10",
     "rollup-plugin-buble": "0.12.1",
-    "uglify-js": "^2.7.1"
+    "uglify-js": "^2.7.3"
   },
   "peerDependencies": {
     "most": "^1.0.1"
