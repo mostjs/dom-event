@@ -42,7 +42,7 @@
     "@most/eslint-config-most": "^1.0.3",
     "assert": "^1.4.1",
     "babel-eslint": "^6.1.2",
-    "buba": "^2.0.2",
+    "buba": "^2.0.4",
     "eslint": "^3.3.1",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
