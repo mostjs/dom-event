@@ -8,7 +8,7 @@
   "files": [
     "src/*",
     "dist/mostDomEvent.js",
-    "type-defintions/dom-event.d.ts"
+    "type-definitions/dom-event.d.ts"
   ],
   "scripts": {
     "build": "npm run build-dist && uglifyjs dist/mostDomEvent.js -o dist/mostDomEvent.min.js",
