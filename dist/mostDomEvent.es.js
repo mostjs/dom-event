@@ -1,8 +1,4 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('most')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'most'], factory) :
-  (factory((global.mostDomEvent = global.mostDomEvent || {}),global.most));
-}(this, (function (exports,most) { 'use strict';
+import { Stream } from 'most';
 
 /** @license MIT License (c) copyright 2015-2016 original author or authors */
 /** @author Brian Cavalier */
@@ -10,7 +6,7 @@
 var domEvent = function (event, node, capture) {
     if ( capture === void 0 ) capture = false;
 
-    return new most.Stream(new DomEvent(event, node, capture));
+    return new Stream(new DomEvent(event, node, capture));
 };
 
 var blur = function (node, capture) {
@@ -237,48 +233,5 @@ function tryEvent (t, x, sink) {
   }
 }
 
-exports.domEvent = domEvent;
-exports.blur = blur;
-exports.focus = focus;
-exports.focusin = focusin;
-exports.focusout = focusout;
-exports.click = click;
-exports.dblclick = dblclick;
-exports.mousedown = mousedown;
-exports.mouseup = mouseup;
-exports.mousemove = mousemove;
-exports.mouseover = mouseover;
-exports.mouseenter = mouseenter;
-exports.mouseout = mouseout;
-exports.mouseleave = mouseleave;
-exports.change = change;
-exports.select = select;
-exports.submit = submit;
-exports.keydown = keydown;
-exports.keypress = keypress;
-exports.keyup = keyup;
-exports.input = input;
-exports.contextmenu = contextmenu;
-exports.resize = resize;
-exports.scroll = scroll;
-exports.error = error;
-exports.hashchange = hashchange;
-exports.popstate = popstate;
-exports.load = load;
-exports.unload = unload;
-exports.pointerdown = pointerdown;
-exports.pointerup = pointerup;
-exports.pointermove = pointermove;
-exports.pointerover = pointerover;
-exports.pointerenter = pointerenter;
-exports.pointerout = pointerout;
-exports.pointerleave = pointerleave;
-exports.touchstart = touchstart;
-exports.touchend = touchend;
-exports.touchmove = touchmove;
-exports.touchcancel = touchcancel;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-//# sourceMappingURL=mostDomEvent.js.map
+export { domEvent, blur, focus, focusin, focusout, click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseenter, mouseout, mouseleave, change, select, submit, keydown, keypress, keyup, input, contextmenu, resize, scroll, error, hashchange, popstate, load, unload, pointerdown, pointerup, pointermove, pointerover, pointerenter, pointerout, pointerleave, touchstart, touchend, touchmove, touchcancel };
+//# sourceMappingURL=mostDomEvent.es.js.map
