@@ -1,5 +1,7 @@
 # most dom-event
 
+[![Join the chat at https://gitter.im/mostjs/dom-event](https://badges.gitter.im/mostjs/dom-event.svg)](https://gitter.im/mostjs/dom-event?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Streamlined DOM events for [most](https://github.com/cujojs/most).  Now you can write:
 
 ```js
