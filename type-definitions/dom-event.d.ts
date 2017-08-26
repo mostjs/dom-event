@@ -25,7 +25,7 @@ export function input(node: EventTarget, capture?: boolean): Stream<Event>;
 export function contextmenu(node: EventTarget, capture?: boolean): Stream<PointerEvent>;
 export function resize(node: EventTarget, capture?: boolean): Stream<UIEvent>;
 export function scroll(node: EventTarget, capture?: boolean): Stream<UIEvent>;
-export function error(node: EventTarget, capture?: boolean): Stream<Event>;
+export function error(node: EventTarget, capture?: boolean): Stream<ErrorEvent>;
 
 export function hashchange(node: EventTarget, capture?: boolean): Stream<Event>;
 export function popstate(node: EventTarget, capture?: boolean): Stream<Event>;
