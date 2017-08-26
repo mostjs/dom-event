@@ -27,8 +27,8 @@ export function resize(node: EventTarget, capture?: boolean): Stream<UIEvent>;
 export function scroll(node: EventTarget, capture?: boolean): Stream<UIEvent>;
 export function error(node: EventTarget, capture?: boolean): Stream<ErrorEvent>;
 
-export function hashchange(node: EventTarget, capture?: boolean): Stream<Event>;
-export function popstate(node: EventTarget, capture?: boolean): Stream<Event>;
+export function hashchange(node: EventTarget, capture?: boolean): Stream<HashChangeEvent>;
+export function popstate(node: EventTarget, capture?: boolean): Stream<PopStateEvent>;
 export function load(node: EventTarget, capture?: boolean): Stream<Event>;
 export function unload(node: EventTarget, capture?: boolean): Stream<Event>;
 
