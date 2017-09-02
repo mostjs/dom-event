@@ -59,5 +59,8 @@
   },
   "peerDependencies": {
     "most": "^1.0.1"
+  },
+  "dependencies": {
+    "flow-bin": "^0.54.0"
   }
 }
