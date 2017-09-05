@@ -3,3 +3,4 @@ node_modules/
 coverage/
 dist/mostDomEvent.es.js
 dist/mostDomEvent.es.js.map
+dist/mostDomEvent.js.flow

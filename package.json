@@ -12,8 +12,10 @@
     "type-definitions/dom-event.d.ts"
   ],
   "scripts": {
-    "build": "npm run build-dist && uglifyjs dist/mostDomEvent.js -o dist/mostDomEvent.min.js",
-    "build-dist": "mkdir -p dist && rollup -c && rollup -c rollup.es.js",
+    "build": "npm run build:dist && npm run build:min && npm run build:flow",
+    "build:dist": "mkdir -p dist && rollup -c && rollup -c rollup.es.js",
+    "build:min": "uglifyjs dist/mostDomEvent.js -o dist/mostDomEvent.min.js",
+    "build:flow": "cpy src/index.js.flow dist --rename mostDomEvent.js.flow",
     "prepublish": "npm run build",
     "preversion": "npm run build",
     "test": "npm run test:lint && npm run test:unit && npm run test:flow",
@@ -45,6 +47,7 @@
     "assert": "^1.4.1",
     "babel-eslint": "^6.1.2",
     "buba": "^3.0.0",
+    "cpy-cli": "^1.0.1",
     "eslint": "^3.3.1",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
