@@ -1,6 +1,6 @@
 // @flow
 
-import { domEvent, click } from '../src'
+import { domEvent, click } from '../../src'
 
 const el = document.createElement('div')
 
