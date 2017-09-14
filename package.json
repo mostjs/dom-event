@@ -43,8 +43,10 @@
   },
   "homepage": "https://github.com/mostjs/dom-event#readme",
   "devDependencies": {
+    "@briancavalier/assert": "^3.4.0",
+    "@most/core": "^0.13.0",
     "@most/eslint-config-most": "^1.0.3",
-    "assert": "^1.4.1",
+    "@most/scheduler": "^0.13.0",
     "babel-eslint": "^6.1.2",
     "buba": "^3.0.0",
     "cpy-cli": "^1.0.1",

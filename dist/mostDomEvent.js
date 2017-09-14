@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('most')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'most'], factory) :
-  (factory((global.mostDomEvent = global.mostDomEvent || {}),global.most));
-}(this, (function (exports,most) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.mostDomEvent = global.mostDomEvent || {})));
+}(this, (function (exports) { 'use strict';
 
 /** @license MIT License (c) copyright 2015-2016 original author or authors */
 /** @author Brian Cavalier */
@@ -10,7 +10,7 @@
 var domEvent = function (event, node, capture) {
     if ( capture === void 0 ) capture = false;
 
-    return new most.Stream(new DomEvent(event, node, capture));
+    return new DomEvent(event, node, capture);
 };
 
 var blur = function (node, capture) {
@@ -221,7 +221,7 @@ var DomEvent = function DomEvent (event, node, capture) {
 DomEvent.prototype.run = function run (sink, scheduler) {
     var this$1 = this;
 
-  var send = function (e) { return tryEvent(scheduler.now(), e, sink); };
+  var send = function (e) { return tryEvent(scheduler.currentTime(), e, sink); };
   var dispose = function () { return this$1.node.removeEventListener(this$1.event, send, this$1.capture); };
 
   this.node.addEventListener(this.event, send, this.capture);

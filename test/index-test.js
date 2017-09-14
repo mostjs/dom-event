@@ -2,9 +2,24 @@
 /** @author Brian Cavalier */
 
 import { describe, it } from 'mocha'
-import assert from 'assert'
+import { eq, assert } from '@briancavalier/assert'
+import { runEffects, take, tap } from '@most/core'
+import { newDefaultScheduler } from '@most/scheduler'
 import FakeEventTarget from './helper/FakeEventTarget'
 import * as DOMEvent from '../src/index'
+
+const drain = s => {
+  return runEffects(s, newDefaultScheduler())
+}
+
+const observe = (f, s) => {
+  return drain(tap(f, s))
+}
+
+const collect = s => {
+   const into = []
+   return observe(x => into.push(x), s).then(() => into)
+}
 
 const verifyAddEventListener = (eventType, capture) => {
   const t = new FakeEventTarget()
@@ -21,10 +36,10 @@ const verifyAddEventListenerMethod = (eventType, capture) => {
 }
 
 const verifyAdd = (eventType, capture, t, s) => {
-  s.drain()
+  drain(s)
 
-  assert.strictEqual(eventType, t.event)
-  assert.strictEqual(capture, t.capture)
+  eq(eventType, t.event)
+  eq(capture, t.capture)
 }
 
 const verifyRemoveEventListener = (eventType, capture) => {
@@ -44,9 +59,9 @@ const verifyRemoveEventListenerMethod = (eventType, capture) => {
 const verifyRemove = (eventType, capture, t, s) => {
   setTimeout(() => t.emit(1), 0)
 
-  return s.take(1).drain().then(() => {
-    assert.strictEqual(eventType, t.removedEvent)
-    assert.strictEqual(capture, t.removedCapture)
+  return drain(take(1, s)).then(() => {
+    eq(eventType, t.removedEvent)
+    eq(capture, t.removedCapture)
   })
 }
 
@@ -76,8 +91,8 @@ describe('domEvent', () => {
       t.emit(3)
     }, 0)
 
-    return s.take(3).reduce((a, x) => a.concat(x), [])
-      .then(result => assert.deepEqual([1, 2, 3], result))
+    return collect(take(3, s))
+      .then(eq([1, 2, 3]))
   })
 
   it('should propagate errors', () => {
@@ -87,9 +102,8 @@ describe('domEvent', () => {
     setTimeout(() => t.emit(1), 0)
 
     const expected = new Error()
-    return s.tap(_ => { throw expected }).drain()
-      .then(x => assert(false, `expected error, but got event ${x}`),
-        e => assert.strictEqual(expected, e))
+    return observe(_ => { throw expected }, s)
+      .then(x => assert(false, `expected error, but got event ${x}`), eq(expected))
   })
 
   it('should call removeEventListener with expected parameters', () => {
@@ -136,8 +150,8 @@ describe('domEvent', () => {
             t.emit(3)
           }, 0)
 
-          return s.take(3).reduce((a, x) => a.concat(x), [])
-            .then(result => assert.deepEqual([1, 2, 3], result))
+          return collect(take(3, s))
+            .then(eq([1, 2, 3]))
         })
 
         it('should call removeEventListener with expected parameters', () => {

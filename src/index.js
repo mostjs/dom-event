@@ -2,11 +2,9 @@
 /** @author Brian Cavalier */
 'use strict'
 
-import { Stream } from 'most'
-
 // domEvent :: (EventTarget t, Event e) => String -> t -> boolean=false -> Stream e
 export const domEvent = (event, node, capture = false) =>
-  new Stream(new DomEvent(event, node, capture))
+  new DomEvent(event, node, capture)
 
 export const blur = (node, capture = false) => domEvent('blur', node, capture)
 export const focus = (node, capture = false) => domEvent('focus', node, capture)
@@ -59,7 +57,7 @@ class DomEvent {
   }
 
   run (sink, scheduler) {
-    const send = e => tryEvent(scheduler.now(), e, sink)
+    const send = e => tryEvent(scheduler.currentTime(), e, sink)
     const dispose = () => this.node.removeEventListener(this.event, send, this.capture)
 
     this.node.addEventListener(this.event, send, this.capture)
