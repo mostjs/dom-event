@@ -1,6 +1,6 @@
 /** @license MIT License (c) copyright 2015-2016 original author or authors */
 /** @author Brian Cavalier */
-'use strict'
+import { currentTime } from '@most/scheduler'
 
 // domEvent :: (EventTarget t, Event e) => String -> t -> boolean=false -> Stream e
 export const domEvent = (event, node, capture = false) =>
@@ -57,7 +57,7 @@ class DomEvent {
   }
 
   run (sink, scheduler) {
-    const send = e => tryEvent(scheduler.currentTime(), e, sink)
+    const send = e => tryEvent(currentTime(scheduler), e, sink)
     const dispose = () => this.node.removeEventListener(this.event, send, this.capture)
 
     this.node.addEventListener(this.event, send, this.capture)

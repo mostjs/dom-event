@@ -1,6 +1,4 @@
 node_modules/
 .idea/
 coverage/
-dist/mostDomEvent.es.js
-dist/mostDomEvent.es.js.map
-dist/mostDomEvent.js.flow
+dist/

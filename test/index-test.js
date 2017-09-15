@@ -17,8 +17,8 @@ const observe = (f, s) => {
 }
 
 const collect = s => {
-   const into = []
-   return observe(x => into.push(x), s).then(() => into)
+  const into = []
+  return observe(x => into.push(x), s).then(() => into)
 }
 
 const verifyAddEventListener = (eventType, capture) => {
