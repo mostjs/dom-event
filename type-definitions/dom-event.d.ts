@@ -1,4 +1,4 @@
-import {Stream} from "most";
+import {Stream} from "@most/types";
 
 export function domEvent(event: string, node: EventTarget, capture?: boolean): Stream<Event>
 

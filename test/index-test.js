@@ -2,24 +2,11 @@
 /** @author Brian Cavalier */
 
 import { describe, it } from 'mocha'
-import { eq, assert } from '@briancavalier/assert'
-import { runEffects, take, tap } from '@most/core'
-import { newDefaultScheduler } from '@most/scheduler'
+import { take } from '@most/core'
+import { eq, fail } from '@briancavalier/assert'
 import FakeEventTarget from './helper/FakeEventTarget'
 import * as DOMEvent from '../src/index'
-
-const drain = s => {
-  return runEffects(s, newDefaultScheduler())
-}
-
-const observe = (f, s) => {
-  return drain(tap(f, s))
-}
-
-const collect = s => {
-  const into = []
-  return observe(x => into.push(x), s).then(() => into)
-}
+import { observe, collect, drain } from './helper/observe'
 
 const verifyAddEventListener = (eventType, capture) => {
   const t = new FakeEventTarget()
@@ -103,7 +90,7 @@ describe('domEvent', () => {
 
     const expected = new Error()
     return observe(_ => { throw expected }, s)
-      .then(x => assert(false, `expected error, but got event ${x}`), eq(expected))
+      .then(x => fail(false, `expected error, but got event ${x}`), eq(expected))
   })
 
   it('should call removeEventListener with expected parameters', () => {

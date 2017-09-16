@@ -1,6 +1,6 @@
 // @flow
 
-import { Stream } from "most"
+import type { Stream } from "@most/types"
 
 declare export function domEvent(event: 'blur', node: EventTarget, capture?: boolean): Stream<FocusEvent>
 declare export function domEvent(event: 'focus', node: EventTarget, capture?: boolean): Stream<FocusEvent>
