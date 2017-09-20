@@ -3,7 +3,6 @@
   "version": "1.5.0",
   "description": "Streamlined DOM Events for most.js",
   "main": "dist/mostDomEvent.js",
-  "jsnext:main": "dist/mostDomEvent.es.js",
   "module": "dist/mostDomEvent.es.js",
   "typings": "type-definitions/dom-event.d.ts",
   "files": [
