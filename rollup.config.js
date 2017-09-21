@@ -1,10 +1,26 @@
-import buble from 'rollup-plugin-buble';
+import buble from 'rollup-plugin-buble'
+import pkg from './package.json'
 
 export default {
-  entry: 'src/index.js',
-  dest: 'dist/mostDomEvent.js',
-  format: 'umd',
-  moduleName: 'mostDomEvent',
-  sourceMap: true,
-  plugins: [buble()]
+  input: 'src/index.js',
+  plugins: [
+    buble()
+  ],
+  external: ['@most/scheduler'],
+  output: [
+    {
+      file: pkg.main,
+      format: 'umd',
+      name: 'mostDomEvent',
+      sourcemap: true,
+      globals: {
+        '@most/scheduler': 'mostScheduler'
+      }
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true
+    }
+  ]
 }
