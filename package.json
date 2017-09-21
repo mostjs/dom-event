@@ -1,6 +1,6 @@
 {
   "name": "@most/dom-event",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Streamlined DOM Events for most.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
