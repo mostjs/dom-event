@@ -3,7 +3,6 @@
   "version": "1.5.0",
   "description": "Streamlined DOM Events for most.js",
   "main": "dist/mostDomEvent.js",
-  "jsnext:main": "dist/mostDomEvent.es.js",
   "module": "dist/mostDomEvent.es.js",
   "typings": "type-definitions/dom-event.d.ts",
   "files": [
@@ -20,7 +19,7 @@
     "preversion": "npm run build",
     "test": "npm run test:lint && npm run test:unit && npm run test:flow",
     "test:unit": "istanbul cover _mocha",
-    "test:lint": "jsinspect src && jsinspect test && eslint src test --ignore-pattern flow",
+    "test:lint": "standard --fix 'src/*.js' 'test/*.js' --verbose | snazzy",
     "test:flow": "flow check",
     "postpublish": "greenkeeper-postpublish"
   },
@@ -43,26 +42,27 @@
   },
   "homepage": "https://github.com/mostjs/dom-event#readme",
   "devDependencies": {
-    "@most/eslint-config-most": "^1.0.3",
-    "assert": "^1.4.1",
-    "babel-eslint": "^6.1.2",
+    "@briancavalier/assert": "^3.4.0",
+    "@most/core": "^0.13.0",
     "buba": "^3.0.0",
     "cpy-cli": "^1.0.1",
-    "eslint": "^3.3.1",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-plugin-promise": "^2.0.1",
-    "eslint-plugin-standard": "^2.0.0",
     "flow-bin": "^0.54.0",
     "greenkeeper-postpublish": "^1.0.1",
     "istanbul": "^1.1.0-alpha.1",
-    "jsinspect": "^0.8.0",
     "mocha": "^3.0.2",
-    "most": "^1.0.1",
     "rollup": "0.40.0",
     "rollup-plugin-buble": "0.15.0",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
     "uglify-js": "^2.7.1"
   },
-  "peerDependencies": {
-    "most": "^1.0.1"
+  "standard": {
+    "ignore": [
+      "test/flow"
+    ]
+  },
+  "dependencies": {
+    "@most/scheduler": "^0.13.0",
+    "@most/types": "^0.11.1"
   }
 }

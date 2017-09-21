@@ -1,7 +1,0 @@
-{
-  "extends": "@most/eslint-config-most",
-  "env": {
-    "browser": true,
-    "node": true
-  }
-}
