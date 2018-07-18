@@ -1,6 +1,6 @@
 # most dom-event
 
-Streamlined DOM events for [most](https://github.com/cujojs/most).  Now you can write:
+Streamlined DOM events for [@most/core](https://github.com/mostjs/core).  Now you can write:
 
 ```js
 import { click } from '@most/dom-event';
