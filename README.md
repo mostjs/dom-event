@@ -25,7 +25,7 @@ runEffects(tap(console.log, clickStream), newDefaultScheduler());
 See [the source](src/index.js) for all the supported event names. Each has the general signature:
 
 ```js
-const stream = eventName(domNode, (useCapture = false));
+const stream = eventName(domNode, useCapture = false);
 ```
 
 ### domEvent
@@ -35,5 +35,5 @@ const stream = eventName(domNode, (useCapture = false));
 If there's an event type that isn't supported, you can use the general `domEvent` API:
 
 ```js
-const stream = domEvent(eventName, domNode, (useCapture = false));
+const stream = domEvent(eventName, domNode, useCapture = false);
 ```
