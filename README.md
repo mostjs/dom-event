@@ -4,7 +4,7 @@ Streamlined DOM events for [@most/core](https://github.com/mostjs/core). Now you
 
 ```js
 import { click } from '@most/dom-event';
-import { tap runEffects } from "@most/core";
+import { tap, runEffects } from "@most/core";
 import { newDefaultScheduler } from "@most/scheduler";
 
 const clickStream = click(el);
