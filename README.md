@@ -1,13 +1,15 @@
 # most dom-event
 
-Streamlined DOM events for [@most/core](https://github.com/mostjs/core).  Now you can write:
+Streamlined DOM events for [@most/core](https://github.com/mostjs/core). Now you can write:
 
 ```js
 import { click } from '@most/dom-event';
+import { tap, runEffects } from "@most/core";
+import { newDefaultScheduler } from "@most/scheduler";
 
 const clickStream = click(el);
 
-clickStream.observe(event => console.log(event));
+runEffects(tap(console.log, clickStream), newDefaultScheduler());
 ```
 
 ## Install
@@ -20,10 +22,10 @@ clickStream.observe(event => console.log(event));
 
 #### &lt;eventName&gt; :: (EventTarget t, Event e) => t &rarr; boolean=false &rarr; Stream e
 
-See [the source](src/index.js) for all the supported event names.  Each has the general signature:
+See [the source](src/index.js) for all the supported event names. Each has the general signature:
 
 ```js
-const stream = eventName(domNode, useCapture = false)
+const stream = eventName(domNode, useCapture = false);
 ```
 
 ### domEvent
