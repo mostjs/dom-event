@@ -1,5 +1,8 @@
-import {Stream} from "@most/types";
+import { Stream } from "@most/types";
 
+export function domEvent<E extends keyof ElementEventMap>(event: E, node: Element, capture?: boolean | AddEventListenerOptions): Stream<ElementEventMap[E]>
+export function domEvent<E extends keyof HTMLElementEventMap>(event: E, node: HTMLElement, capture?: boolean | AddEventListenerOptions): Stream<HTMLElementEventMap[E]>
+export function domEvent<E extends keyof SVGElementEventMap>(event: E, node: SVGElement, capture?: boolean | AddEventListenerOptions): Stream<SVGElementEventMap[E]>
 export function domEvent(event: string, node: EventTarget, capture?: boolean | AddEventListenerOptions): Stream<Event>
 
 export function blur(node: EventTarget, capture?: boolean | AddEventListenerOptions): Stream<FocusEvent>;
