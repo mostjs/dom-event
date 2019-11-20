@@ -47,7 +47,7 @@
     "mocha": "^3.0.2",
     "nyc": "^11.2.1",
     "rollup": "^0.50.0",
-    "rollup-plugin-buble": "0.15.0",
+    "rollup-plugin-buble": "0.19.8",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "uglify-js": "^3.1.1"
