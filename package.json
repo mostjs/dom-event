@@ -40,7 +40,7 @@
   "homepage": "https://github.com/mostjs/dom-event#readme",
   "devDependencies": {
     "@briancavalier/assert": "^3.4.0",
-    "@most/core": "^0.13.0",
+    "@most/core": "^1.5.0",
     "buba": "^4.0.2",
     "cpy-cli": "^1.0.1",
     "flow-bin": "^0.55.0",
