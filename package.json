@@ -42,7 +42,7 @@
     "@briancavalier/assert": "^3.4.0",
     "@most/core": "^0.13.0",
     "buba": "^4.0.2",
-    "cpy-cli": "^1.0.1",
+    "cpy-cli": "^2.0.0",
     "flow-bin": "^0.55.0",
     "mocha": "^3.0.2",
     "nyc": "^11.2.1",
